@@ -7,6 +7,6 @@
     }
     catch (Exception ex) 
     {
-        Console.WriteLine($"Temos um problema: {ex.Message}");
+        Console.WriteLine($"Erro: {ex.Message}");
     }
 }
