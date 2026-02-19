@@ -25,7 +25,8 @@ using (HttpClient client = new HttpClient())
         //    }
         //}
         //LinqFilter.FilterAllGenresMusics(musics);
-        LinqOrder.ShowListOfArtistsSorted(musics);
+        //LinqOrder.ShowListOfArtistsSorted(musics);
+        LinqFilter.FilterArtistsByGenreMusical(musics, "pop");
     }
     catch (Exception ex)
     {
