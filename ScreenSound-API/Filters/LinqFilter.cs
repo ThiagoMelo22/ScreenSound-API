@@ -45,9 +45,26 @@ internal class LinqFilter
         }
     }
 
+    public static void FilterMusicByYear(List<Music> musics, int year) 
+    {
+        var musicsOfYear = musics
+            .Where(m => m.Year == year)
+            .Select(m => m.Song)
+            .Distinct()
+            .OrderBy(a => a)
+            .ToList();
+
+        Console.WriteLine($"Músicas de {year}");
+        foreach (var music in musicsOfYear) 
+        {
+            Console.WriteLine($"- {music}");
+        }
+    }
+
     //Exemplos:
     //LinqFilter.FilterAllGenresMusics(musics);
     //LinqOrder.ShowListOfArtistsSorted(musics);
     //LinqFilter.FilterArtistsByGenreMusical(musics, "pop");
     //LinqFilter.FilterMusicsByAnArtist(musics, "U2");
+    //LinqFilter.FilterMusicByYear(musics, 2012);
 }
