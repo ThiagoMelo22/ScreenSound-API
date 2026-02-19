@@ -24,7 +24,8 @@ using (HttpClient client = new HttpClient())
         //        music.ShowSongDetails();
         //    }
         //}
-        LinqFilter.FilterAllGenresMusics(musics);
+        //LinqFilter.FilterAllGenresMusics(musics);
+        LinqOrder.ShowListOfArtistsSorted(musics);
     }
     catch (Exception ex)
     {
