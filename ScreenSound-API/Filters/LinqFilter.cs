@@ -44,4 +44,10 @@ internal class LinqFilter
             Console.WriteLine($"- {music.Song}");
         }
     }
+
+    //Exemplos:
+    //LinqFilter.FilterAllGenresMusics(musics);
+    //LinqOrder.ShowListOfArtistsSorted(musics);
+    //LinqFilter.FilterArtistsByGenreMusical(musics, "pop");
+    //LinqFilter.FilterMusicsByAnArtist(musics, "U2");
 }

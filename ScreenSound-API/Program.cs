@@ -17,17 +17,13 @@ using (HttpClient client = new HttpClient())
 
         List<Music>? musics = JsonSerializer.Deserialize<List<Music>>(response, options)!;
 
-        //if (musics != null) 
-        //{
-        //    foreach (var music in musics ?? new List<Music>())
-        //    {
-        //        music.ShowSongDetails();
-        //    }
-        //}
-        //LinqFilter.FilterAllGenresMusics(musics);
-        //LinqOrder.ShowListOfArtistsSorted(musics);
-        //LinqFilter.FilterArtistsByGenreMusical(musics, "pop");
-        LinqFilter.FilterMusicsByAnArtist(musics, "U2");
+        if (musics != null)
+        {
+            foreach (var music in musics ?? new List<Music>())
+            {
+                music.ShowSongDetails();
+            }
+        }
     }
     catch (Exception ex)
     {
