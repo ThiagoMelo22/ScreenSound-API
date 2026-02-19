@@ -1,6 +1,7 @@
 ﻿using ScreenSound_API.Models;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using ScreenSound_API.Filters;
 
 using (HttpClient client = new HttpClient())
 {
@@ -16,14 +17,14 @@ using (HttpClient client = new HttpClient())
 
         List<Music>? musics = JsonSerializer.Deserialize<List<Music>>(response, options)!;
 
-        if (musics != null) 
-        {
-            foreach (var music in musics ?? new List<Music>())
-            {
-                music.ShowSongDetails();
-            }
-        }
-        Console.WriteLine(musics.Count);
+        //if (musics != null) 
+        //{
+        //    foreach (var music in musics ?? new List<Music>())
+        //    {
+        //        music.ShowSongDetails();
+        //    }
+        //}
+        LinqFilter.FilterAllGenresMusics(musics);
     }
     catch (Exception ex)
     {
