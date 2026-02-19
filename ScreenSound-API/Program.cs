@@ -1,11 +1,31 @@
-﻿using (HttpClient client = new HttpClient())
+﻿using ScreenSound_API.Models;
+using System.Text.Json;
+using System.Text.Json.Serialization;
+
+using (HttpClient client = new HttpClient())
 {
     try
     {
-        string resposta = await client.GetStringAsync("https://guilhermeonrails.github.io/api-csharp-songs/songs.json");
-        Console.WriteLine(resposta);
+        string response = await client.GetStringAsync("https://guilhermeonrails.github.io/api-csharp-songs/songs.json");
+
+        var options = new JsonSerializerOptions 
+        {
+            PropertyNameCaseInsensitive = true,
+            NumberHandling = JsonNumberHandling.AllowReadingFromString
+        }; 
+
+        List<Music>? musics = JsonSerializer.Deserialize<List<Music>>(response, options)!;
+
+        if (musics != null) 
+        {
+            foreach (var music in musics ?? new List<Music>())
+            {
+                music.ShowSongDetails();
+            }
+        }
+        Console.WriteLine(musics.Count);
     }
-    catch (Exception ex) 
+    catch (Exception ex)
     {
         Console.WriteLine($"Erro: {ex.Message}");
     }
