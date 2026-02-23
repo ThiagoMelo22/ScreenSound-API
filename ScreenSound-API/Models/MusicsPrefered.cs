@@ -1,4 +1,6 @@
-﻿namespace ScreenSound_API.Models;
+﻿using System.Text.Json;
+
+namespace ScreenSound_API.Models;
 
 internal class MusicsPrefered
 {
@@ -25,4 +27,37 @@ internal class MusicsPrefered
         }
         Console.WriteLine();
     }
+
+    public void GenerateJSONFile() 
+    {
+        string json = JsonSerializer.Serialize(new 
+        {
+            name = Name,
+            musics = ListMusics
+        });
+
+        string nameOfArquive = $"musicas-favoritas-{Name}.json";
+        File.WriteAllText(nameOfArquive, json);
+        Console.WriteLine($"O Arquivo Json foi criado com sucesso! {Path.GetFullPath(nameOfArquive)}");
+    }
+
+    // Exemplos para utilizar no program.cs
+    //var musicsPrefereds = new MusicsPrefered("Thiago");
+    //musicsPrefereds.AddFavoriteSongs(musics[1]);
+    //musicsPrefereds.AddFavoriteSongs(musics[377]);
+    //musicsPrefereds.AddFavoriteSongs(musics[4]);
+    //musicsPrefereds.AddFavoriteSongs(musics[6]);
+    //musicsPrefereds.AddFavoriteSongs(musics[1467]);
+
+    //musicsPrefereds.ShowFavoriteSongs();
+
+    //var musicsPreferedsEve = new MusicsPrefered("Evelyn");
+    //musicsPreferedsEve.AddFavoriteSongs(musics[500]);
+    //    musicsPreferedsEve.AddFavoriteSongs(musics[637]);
+    //    musicsPreferedsEve.AddFavoriteSongs(musics[428]);
+    //    musicsPreferedsEve.AddFavoriteSongs(musics[13]);
+    //    musicsPreferedsEve.AddFavoriteSongs(musics[71]);
+
+    //    musicsPreferedsEve.ShowFavoriteSongs();
+    //    musicsPreferedsEve.GenerateJSONFile();
 }
