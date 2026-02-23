@@ -5,6 +5,7 @@ namespace ScreenSound_API.Models;
 
 public class Music
 {
+    private string[] shades = {"C", "C#", "D", "Eb", "E", "F", "F#", "G", "Ab", "A", "Bb", "B"};
     public string? Artist { get; set; }
     public string? Song { get; set; }
 
@@ -16,6 +17,10 @@ public class Music
     public double Danceability { get; set; }
     public double Energy { get; set; }
     public int Key { get; set; }
+    public string Shade { get
+        {
+            return shades[Key];
+        }}
     public double Loudness { get; set; }
     public int Mode { get; set; }
     public double Speechiness { get; set; }
@@ -32,48 +37,56 @@ public class Music
         Console.WriteLine($"Genre: {Genre}");
         Console.WriteLine($"Popularity: {Popularity}");
         Console.WriteLine($"DurationMs: {DurationMs / 1000}");
-        switch (Key) 
+        Console.WriteLine($"Shade: {Shades(Key)}");
+        Console.WriteLine();
+    }
+
+    public string Shades(int key) 
+    {
+        string result;
+        switch (key)
         {
             case 0:
-                Console.WriteLine("Key: C");
+                result = "C";
                 break;
-            case 1: 
-                Console.WriteLine("Key: C#");
+            case 1:
+                result = "C#";
                 break;
-            case 2: 
-                Console.WriteLine("Key: D");
+            case 2:
+                result = "D";
                 break;
-            case 3: 
-                Console.WriteLine("Key: D#");
+            case 3:
+                result = "D#";
                 break;
             case 4:
-                Console.WriteLine("Key: E");
+                result = "E";
                 break;
-            case 5: 
-                Console.WriteLine("Key: F");
+            case 5:
+                result = "F";
                 break;
             case 6:
-                Console.WriteLine("Key: F#");
+                result = "F#";
                 break;
             case 7:
-                Console.WriteLine("Key: G");
+                result = "G";
                 break;
             case 8:
-                Console.WriteLine("Key: G#");
+                result = "G#";
                 break;
             case 9:
-                Console.WriteLine("Key: A");
+                result = "A";
                 break;
             case 10:
-                Console.WriteLine("Key: A#");
+                result = "A#";
                 break;
             case 11:
-                Console.WriteLine("Key: B");
+                result = "B";
                 break;
             default:
-                Console.WriteLine($"Key: {Key}");
+                result = $"{ Key}";
                 break;
         }
-        Console.WriteLine();
+
+        return result;
     }
 }
