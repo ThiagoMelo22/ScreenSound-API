@@ -17,13 +17,31 @@ using (HttpClient client = new HttpClient())
 
         List<Music>? musics = JsonSerializer.Deserialize<List<Music>>(response, options)!;
 
-        if (musics != null)
-        {
-            foreach (var music in musics ?? new List<Music>())
-            {
-                music.ShowSongDetails();
-            }
-        }
+        //if (musics != null)
+        //{
+        //    foreach (var music in musics ?? new List<Music>())
+        //    {
+        //        music.ShowSongDetails();
+        //    }
+        //}
+
+        var musicsPrefereds = new MusicsPrefered("Thiago");
+        musicsPrefereds.AddFavoriteSongs(musics[1]);
+        musicsPrefereds.AddFavoriteSongs(musics[377]);
+        musicsPrefereds.AddFavoriteSongs(musics[4]);
+        musicsPrefereds.AddFavoriteSongs(musics[6]);
+        musicsPrefereds.AddFavoriteSongs(musics[1467]);
+
+        musicsPrefereds.ShowFavoriteSongs();
+
+        var musicsPreferedsEve = new MusicsPrefered("Evelyn");
+        musicsPreferedsEve.AddFavoriteSongs(musics[500]);
+        musicsPreferedsEve.AddFavoriteSongs(musics[637]);
+        musicsPreferedsEve.AddFavoriteSongs(musics[428]);
+        musicsPreferedsEve.AddFavoriteSongs(musics[13]);
+        musicsPreferedsEve.AddFavoriteSongs(musics[71]);
+
+        musicsPreferedsEve.ShowFavoriteSongs();
     }
     catch (Exception ex)
     {
