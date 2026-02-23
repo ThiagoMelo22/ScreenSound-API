@@ -36,7 +36,7 @@ public class Music
         Console.WriteLine($"{Artist} - {Song} ({Year})");
         Console.WriteLine($"Genre: {Genre}");
         Console.WriteLine($"Popularity: {Popularity}");
-        Console.WriteLine($"DurationMs: {DurationMs / 1000}");
+        Console.WriteLine($"Duration: {DurationMs / 1000}s");
         Console.WriteLine($"Shade: {Shades(Key)}");
         Console.WriteLine();
     }

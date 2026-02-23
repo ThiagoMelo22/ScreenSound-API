@@ -61,10 +61,24 @@ internal class LinqFilter
         }
     }
 
+    public static void FilterMusicInCSharp(List<Music> musics) 
+    {
+        var musicsInCSharp = musics
+            .Where(m => m.Shade.Equals("C#"))
+            .Select(m => m.Song)
+            .ToList();
+        Console.WriteLine("Músicas em C#:");
+        foreach (var music in musicsInCSharp) 
+        {
+            Console.WriteLine($"- {music}");
+        }
+    }
+
     //Exemplos:
     //LinqFilter.FilterAllGenresMusics(musics);
     //LinqOrder.ShowListOfArtistsSorted(musics);
     //LinqFilter.FilterArtistsByGenreMusical(musics, "pop");
     //LinqFilter.FilterMusicsByAnArtist(musics, "U2");
     //LinqFilter.FilterMusicByYear(musics, 2012);
+    //LinqFilter.FilterMusicInCSharp(musics);
 }
